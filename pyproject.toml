@@ -11,4 +11,5 @@ dependencies = [
 ]
 
 [tool.poe.tasks]
-prod = "uv run main.py"
+prod = "docker compose up -d --build mcp-server"
+prod_logs = "docker compose logs -f mcp-server"

@@ -1,0 +1,18 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Deploy: push to your repo, then "New +" > "Blueprint" in the Render dashboard.
+services:
+  - type: web
+    name: demo-mcp-server
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    # Render sets PORT automatically and expects the app to bind to it.
+    # main.py already reads PORT / HOST / MCP_PATH from the environment.
+    envVars:
+      - key: HOST
+        value: "0.0.0.0"
+      - key: MCP_PATH
+        value: "/"
+    # No healthCheckPath: Render's health check requires a plain path returning
+    # 200, but the MCP root ("/") needs streamable-http headers. Render falls
+    # back to port-binding detection, which the server satisfies on startup.

@@ -1,0 +1,31 @@
+# Virtual envs — always rebuilt inside the image
+.venv/
+venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Git / VCS
+.git/
+.gitignore
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Docker / compose (not needed inside the image)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Docs / misc
+README.md
+*.md
+!README.md
+.env
+.env.*
